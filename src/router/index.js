@@ -1,10 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Brazil from "../views/Brazil";
-import Hawaii from "../views/Hawaii";
-import Jamaica from "../views/Jamaica";
-import Panama from "../views/Panama";
+
 
 Vue.use(VueRouter);
 
@@ -26,26 +23,37 @@ const routes = [
   {
     path: "/brazil",
     name: "Brazil",
-    component: Brazil,
+    component: () =>
+      import( /* webpackChunkName: "Brazil" */"../views/Brazil")
   },
   {
     path: "/hawaii",
     name: "Hawaii",
-    component: Hawaii,
+    component: () =>
+      import(/* webpackChunkName: "Hawaii" */"../views/Hawaii")
   },
   {
     path: "/jamaica",
     name: "Jamaica",
-    component: Jamaica,
+    component: () =>
+      import(/* webpackChunkName: "Jamaica" */"../views/Jamaica")
   },
   {
     path: "/panama",
     name: "Panama",
-    component: Panama,
+    component: () =>
+      import(/* webpackChunkName: "Panama" */"../views/Panama"),
+  },
+    {
+    path: "/vue-school-travel-app",
+    name: "DestinationDetails",
+    component: () =>
+      import(/* webpackChunkName: "DestinationDetails" */"../views/DestinationDetails"),
   }
 ];
 
 const router = new VueRouter({
+  linkExactActiveClass: "vue-school-active-class",
   routes,
 });
 
